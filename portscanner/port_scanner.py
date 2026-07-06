@@ -1,16 +1,20 @@
 import socket
 target_ip=input("Enter IP address: ")
-print("scanning for ports")
+print("=" * 50)
+print("PYTHON PORT SCANNER")
+print("=" * 50)
+print(f"Target: {target_ip}")
+print("Scanning Started")
 
-for i in range(20, 101):
-    print(i)
-    s = socket.socket()
+for port in range(1, 1025):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(0.5)
 
     try:
-        s.connect((target_ip,i))
-        print(f"port open {i}")
+        s.connect((target_ip, port))
+        print(f"port open {port}")
         
-    except:
-        print(f"port closed {i}")
+    except (ConnectionRefusedError, socket.timeout, OSError):
+        pass
     finally:
         s.close()
