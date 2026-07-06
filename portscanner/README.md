@@ -67,4 +67,4 @@ This project was created for educational purposes to learn Python socket program
 
 ## Author
 
-**Nish**
+**Nish <3**
